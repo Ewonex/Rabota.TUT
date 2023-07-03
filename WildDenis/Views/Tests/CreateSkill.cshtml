@@ -1,0 +1,44 @@
+﻿@using System.Security.Claims;
+@using LayerDAL.Settings;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@{
+    Layout = "~/Views/Shared/_LayoutTester.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Создание теста</title>
+</head>
+<body>
+    <div class="registrationDiv">
+
+
+
+        <form asp-controller="Tests" asp-action="CreateSkill" method="post">
+            <h1>Добавление навыка</h1>
+            <label for="testName">Навык:</label><br>
+            <input type="text" id="pickedSkill" name="pickedSkill" required minlength="2" maxlength="20" autocomplete="off" placeholder="пр. C#"><br>
+
+            <button class="button8" type="submit">Добавить</button><br>
+
+            @if (TempData["ValidateMessage"] != null)
+            {
+                <br />
+                <label>@TempData["ValidateMessage"]</label>
+            }
+
+        </form>
+
+
+    </div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\bin\Debug\net6.0\LayerDAL.deps.json
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\bin\Debug\net6.0\LayerDAL.dll
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\bin\Debug\net6.0\LayerDAL.pdb
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.csproj.AssemblyReference.cache
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.AssemblyInfoInputs.cache
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.AssemblyInfo.cs
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.csproj.CoreCompileInputs.cache
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.dll
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\refint\LayerDAL.dll
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\LayerDAL.pdb
+C:\Users\D_kri\Desktop\курсовая бд\проект 2\LayerDAL\obj\Debug\net6.0\ref\LayerDAL.dll
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\bin\Debug\net6.0\LayerDAL.deps.json
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\bin\Debug\net6.0\LayerDAL.dll
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\bin\Debug\net6.0\LayerDAL.pdb
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.csproj.AssemblyReference.cache
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.AssemblyInfoInputs.cache
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.AssemblyInfo.cs
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.csproj.CoreCompileInputs.cache
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.dll
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\refint\LayerDAL.dll
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.pdb
+C:\Users\D_kri\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\ref\LayerDAL.dll
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\bin\Debug\net6.0\LayerDAL.deps.json
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\bin\Debug\net6.0\LayerDAL.dll
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\bin\Debug\net6.0\LayerDAL.pdb
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.csproj.AssemblyReference.cache
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.AssemblyInfoInputs.cache
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.AssemblyInfo.cs
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.csproj.CoreCompileInputs.cache
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.dll
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\refint\LayerDAL.dll
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\LayerDAL.pdb
+C:\Users\Денис\Desktop\диплом\проект\LayerDAL\obj\Debug\net6.0\ref\LayerDAL.dll

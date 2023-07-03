@@ -1,0 +1,92 @@
+﻿@model WildDenis.Models.VacansyAdding;
+@{
+    Layout = "~/Views/Shared/_LayoutAuthorized.cshtml";
+    string stringSkills = TempData["StringOfSkills"].ToString();
+    List<string> TempSkills = stringSkills.Split(", ").ToList();
+    TempData["StringOfSkills"] = stringSkills;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Добавление вакансии</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const togInput = document.getElementById("togInput");
+            const plusInput = document.getElementById("plusInput");
+            const plusSelect = document.getElementById("plusSelect");
+
+            togInput.addEventListener('change', function () {
+                if (togInput.checked) {
+                    plusSelect.style.display = 'none';
+                    plusInput.style.display = 'inline-block';
+                } else {
+                    plusSelect.style.display = 'inline-block';
+                    plusInput.style.display = 'none';
+                }
+            });
+        });
+
+        function addSkill() {
+            const togInput = document.getElementById("togInput");
+            var inputInfo;
+
+            if (togInput.checked) {
+                inputInfo = document.getElementById("plusInput");
+            }
+            else {
+                inputInfo = document.getElementById("plusSelect");
+            }
+            if (document.getElementById("skillField").value != "") {
+                document.getElementById("skillField").value = document.getElementById("skillField").value + ", " + inputInfo.value;
+            }
+            else {
+                document.getElementById("skillField").value = inputInfo.value;
+            }
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <div class="registrationDiv">
+        <h1>создание вакансии</h1>
+        <label class="toggle-slider" id="togSlider">
+            <input type="checkbox" id="togInput">
+            <span class="slider"></span>
+        </label>
+        <select class="plus-select" id="plusSelect">
+            @{
+                foreach (var a in TempSkills)
+                {
+                    <option value="@a">@a</option>
+                }
+            }
+        </select>
+        <input class="plus-select" type="text" id="plusInput" style="display: none; width:140px;" placeholder="свой навык" maxlength="25" minlength="1">
+        <button class="plus-button" id="plusButton" onclick="addSkill()">
+            <span>+</span>
+        </button><br>
+        <form asp-controller="Profile" asp-action="VacansyAdd" method="post">
+            <input type="text" placeholder="навыки" asp-for="skills" id="skillField" readonly maxlength="1500"><br>
+            <input type="text" placeholder="должность" asp-for="vacansyName" autocomplete="off" required maxlength="30" minlength="1"><br>
+            <input type="text" placeholder="опишите вакансию" asp-for="aboutVacansy" autocomplete="off" required maxlength="500" minlength="2"><br>
+            <input type="number" placeholder="з.п. BYN" asp-for="salary" maxlength="8" required><br>
+
+
+
+            <button class="button8" type="submit">Создать вакансию</button><br>
+
+            @if (ViewData["ValidateMessage"] != null)
+            {
+                <br />
+                <label>@ViewData["ValidateMessage"]</label>
+            }
+
+        </form>
+    </div>
+</body>
+</html>

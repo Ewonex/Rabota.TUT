@@ -1,0 +1,58 @@
+﻿@using System.Security.Claims;
+@using LayerDAL.Settings;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@{
+    Layout = "~/Views/Shared/_LayoutTester.cshtml";
+    List<String> TempSkills = TempData["StringOfSkills"].ToString().Split(", ").ToList();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Создание теста</title>
+</head>
+<body>
+    <div class="registrationDiv">
+
+
+
+        <form asp-controller="Tests" asp-action="CreateTest" method="post">
+            <h1>Создание теста</h1>
+            <label>Выберите навык для теста:</label><br>
+            <select name="PickedSkill">
+                @{
+                    foreach (var a in TempSkills)
+                    {
+                        <option value="@a">@a</option>
+                    }
+                }
+            </select><br>
+
+            <label for="testName">Дайте ему название:</label><br>
+            <input type="text" id="testName" name="testName" required minlength="2" maxlength="30" autocomplete="off"><br>
+
+            <label for="testName">Опишите его:</label><br>
+            <input type="text" id="testDescription" name="testDescription" required minlength="2" maxlength="250" autocomplete="off" ><br><br>
+
+            <button class="button8" type="submit">Создать тест</button><br>
+
+            @if (TempData["ValidateMessage"] != null)
+            {
+                <br />
+                <label>@TempData["ValidateMessage"]</label>
+            }
+
+        </form>
+
+
+    </div>
+
+
+
+
+
+</body>
+</html>

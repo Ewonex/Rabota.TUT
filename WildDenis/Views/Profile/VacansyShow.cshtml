@@ -1,0 +1,75 @@
+﻿@model IEnumerable<VacansyShowing>;
+@using System.Security.Claims;
+@using LayerDAL.Settings;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@{
+    Layout = "~/Views/Shared/_LayoutAuthorized.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ваши вакансии</title>
+    <script>
+        function confirmDelete() {
+            var result = confirm("Вы уверены, что хотите удалить?");
+            if (result) {
+                confirmationField.value = "true";
+            } else {
+                confirmationField.value = "false";
+            }
+            return result;
+        }
+    </script>
+</head>
+<body>
+
+    <div class="SearchView">
+            @foreach (var item in Model)
+            {
+
+            <div class="resume">
+                <div class="resume-details">
+                    @using (Html.BeginForm("DeleteVacansy", "Profile", new { id = item.idOfVacansy }, FormMethod.Post))
+                    {
+                        <input type="hidden" name="confirmation" value="true" id="confirmationField" />
+                        <button class="close-button" onclick="return confirmDelete()"></button>
+                    }
+                    <p class="name">
+                        <h2 class="position">@item.vacansyName</h2>
+                        Работодатель:<br>
+                        @item.Surname @item.NameOfUser @item.SecName
+                    </p>
+                    <p class="contact"><h2>Контакты:</h2>Телефон: @item.Phone <br>Email: @item.email</p>
+                    <div class="about-me">
+                        <br>
+                        <h2>О вокансии:</h2>
+                        <p>@item.aboutVacansy</p>
+                    </div>
+                    <div class="about-me">
+                        <h2>З.п:</h2>
+                        <p><span style="color:goldenrod">@item.salary BYN</span></p>
+                    </div>
+                    <div class="skills">
+                        <h2>Навыки:</h2>
+                        <ul>
+                            @foreach (var skill in item.skills)
+                            {
+                                <li class="skillForVacansy">@skill</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            }
+
+
+    </div>
+
+
+
+</body>
+</html>

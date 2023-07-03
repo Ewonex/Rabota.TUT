@@ -1,0 +1,86 @@
+﻿@using System.Security.Claims;
+@using LayerDAL.Settings;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@{
+    string login = User.Claims.First(c => c.Type == ClaimsIdentity.DefaultNameClaimType).ToString().Split(' ')[User.Claims.First(c => c.Type == ClaimsIdentity.DefaultNameClaimType).ToString().Split(' ').Length - 1];
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    @{
+        TempData["login"] = login;
+    }
+    <header>
+        <div class="headerDiv1">
+            <nav>
+                <div class="LeftSide">
+                    <a asp-area="" asp-controller="Navigator" asp-action="MainPage">Главная</a>
+                </div>
+                <div class="RightSide">
+                    <a asp-area="" asp-controller="Navigator" asp-action="Profile">@login</a>
+                    |
+                    <a asp-area="" asp-controller="Navigator" asp-action="LogOut">Выход</a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="WildDenisTitle">
+            <a asp-controller="Navigator" asp-action="MainPage" class="logo">
+                Rabota<span class="tut">.TUT</span>
+            </a>
+        </div>
+
+        <div class="search">
+            @{
+                using (Html.BeginForm("Search", "Search", FormMethod.Get))
+                {
+                    <input type="text" placeholder="Найти" name="searching" class="searchBar" autocomplete="off" maxlength="300">
+                    <button class="search-btn" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                }
+            }
+        </div>
+
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footerFirstColumn">
+            <h1 class="fotersH1">контакты</h1>
+            <p>+375 33 123-45-67</p>
+            <p>+375 44 890-12-34</p>
+            <p>+375 29 567-89-01</p>
+            <p>+375 33 634-01-28</p>
+        </div>
+        <div class="footerFirstColumn">
+            <h1 class="fotersH1">соц. сети</h1>
+            <p>Vk: ewonex</p>
+            <p>Tg: &#64onnexy</p>
+            <p>Inst: illildenislilil</p>
+            <p>&#160</p>
+        </div>
+        <div class="footerFirstColumn">
+            <h1 class="fotersH1">о нас</h1>
+            <p>Мы веб-сервис Rabota.tut</p>
+            <p>Созданы для дипломного проекта</p>
+            <p>Сейчас в разработке...</p>
+            <p>...</p>
+        </div>
+    </footer>
+
+</body>
+</html>

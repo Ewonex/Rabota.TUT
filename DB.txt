@@ -1,0 +1,69 @@
+CREATE DATABASE RabotaTut;
+USE RabotaTut;
+
+CREATE TABLE _User(
+	idOfUser INT PRIMARY KEY IDENTITY,
+    NickName VARCHAR(25),
+	Pass VARCHAR(300),
+    email VARCHAR(100),
+    NameOfUser VARCHAR(30),
+	Surname VARCHAR(60),
+	SecName VARCHAR(30),
+	Phone VARCHAR(20),
+	RoleOfUser VARCHAR(50),
+	Photo VARCHAR(300)
+);
+
+CREATE TABLE _Resume(
+	idOfResume INT PRIMARY KEY IDENTITY,
+	idOfUser INT,
+    FOREIGN KEY (idOfUser)  REFERENCES _User (idOfUser) ON DELETE CASCADE, 
+	VacansyName VARCHAR(40),
+	AboutMe VARCHAR(600),
+	Skills VARCHAR(1000)
+);
+
+CREATE TABLE _Vacansy(
+	idOfVacansy INT PRIMARY KEY IDENTITY,
+	idOfUser INT,
+    FOREIGN KEY (idOfUser)  REFERENCES _User (idOfUser) ON DELETE CASCADE, 
+	VacansyName VARCHAR(40),
+	AboutVacansy VARCHAR(600),
+	PublDate DATE,
+	Salary INT,
+	Skills VARCHAR(1000)
+);
+
+CREATE TABLE _Skills(
+	idOfSkill INT PRIMARY KEY IDENTITY,
+	NameOfSkill VARCHAR(20)
+);
+
+
+CREATE TABLE _Tests(
+	idOfTest INT PRIMARY KEY IDENTITY,
+	idOfSkill INT,
+	FOREIGN KEY (idOfSkill)  REFERENCES _Skills (idOfSkill) ON DELETE CASCADE, 
+	DescriptionOfTest VARCHAR(500),
+	NameOfTest VARCHAR(40)
+);
+
+CREATE TABLE _Questions(
+	idOfQuestion INT PRIMARY KEY IDENTITY,
+	idOfTest INT,
+	FOREIGN KEY (idOfTest)  REFERENCES _Tests (idOfTest) ON DELETE CASCADE, 
+	TextOfQuestion VARCHAR(220),
+	Answers VARCHAR(250),
+	CorrectAnswer INT
+);
+
+CREATE TABLE _TestResults(
+	idOfTestResult INT PRIMARY KEY IDENTITY,
+	idOfTest INT,
+	FOREIGN KEY (idOfTest)  REFERENCES _Tests (idOfTest) ON DELETE CASCADE, 
+	idOfUser INT,
+	FOREIGN KEY (idOfUser)  REFERENCES _User (idOfUser) ON DELETE CASCADE, 
+	DateOfPass DATE,
+	Percents INT
+);
+

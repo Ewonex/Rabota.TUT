@@ -1,0 +1,37 @@
+﻿@model WildDenis.Models.Authorization;
+@{
+    Layout = "~/Views/Shared/_LayoutNotAuthorized.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Авторизация</title>
+</head>
+<body>
+    <div class="registrationDiv">
+        <form asp-controller="Access" asp-action="Login" method="post">
+            <h1>Вход</h1>
+            <input type="text" placeholder="логин" asp-for="nickName" autocomplete="off" required maxlength="20" minlength="2"><br>
+            <input type="password" placeholder="пароль" asp-for="pass" autocomplete="off" required maxlength="20" minlength="5"><br>
+
+            <label>
+                <input type="checkbox" asp-for="keepLoggedIn">
+                Запомнить меня
+            </label><br>
+
+            <button class="button8" type="submit">Войти</button><br>
+        
+            @if (ViewData["ValidateMessage"] != null)
+            {
+                <br />
+                <label>@ViewData["ValidateMessage"]</label>
+            }
+
+
+        </form>
+    </div>
+</body>
+</html>

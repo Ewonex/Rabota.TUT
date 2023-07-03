@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TestShowing>;
+@using System.Security.Claims;
+@using LayerDAL.Settings;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@{
+    Layout = "~/Views/Shared/_LayoutTester.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Список тестов</title>
+    <script>
+        function confirmDelete() {
+            var result = confirm("Вы уверены, что хотите удалить?");
+            if (result) {
+                confirmationField.value = "true";
+            } else {
+                confirmationField.value = "false";
+            }
+            return result;
+        }
+    </script>
+</head>
+<body>
+    <div class="registrationDiv">
+
+        @foreach (var item in Model)
+        {
+            <div class="test-card">
+
+                @using (Html.BeginForm("DeleteTest", "Tests", FormMethod.Post))
+                {
+                    @Html.Hidden("id", item.idOfTest)
+                    <input type="hidden" name="confirmation" value="true" id="confirmationField" />
+                    <button class="del-button" onclick="return confirmDelete()"><span class="cross-icon">&#10005;</span></button>
+                }
+                <h3 class="test-title">
+                    @item.nameOfTest                 
+                </h3>
+                <p class="skill">Навык: @item.nameOfSkill</p>
+                <p class="question-count">Количество вопросов: @item.countOfQuestions</p>
+                @using (Html.BeginForm("OpenTestChanging", "Tests", FormMethod.Post))
+                {
+                    @Html.Hidden("id", item.idOfTest)
+                    <button class="edit-button" type="submit">&#9881; Редактировать</button>
+                }
+            </div>
+        }
+
+    </div>
+
+
+
+
+
+</body>
+</html>

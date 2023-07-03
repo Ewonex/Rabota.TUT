@@ -1,0 +1,117 @@
+﻿@using System.Security.Claims;
+@using LayerDAL.Settings;
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.AspNetCore.Authentication.Cookies;
+@{
+    Layout = "~/Views/Shared/_LayoutTester.cshtml";
+    string testName = TempData["TestName"].ToString();
+    int testId = Convert.ToInt32(TempData["idOfTest"]);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Добавление вопроса</title>
+
+    <script>
+
+        function changeFields() {
+            var inputs = document.querySelectorAll('input[type="text"]');
+            var values = Array.from(inputs).map(input => input.value);
+            document.getElementById("hiddenField").value = values.join("~"); 
+        }
+
+
+        function updateAnswerFields() {
+            var answerCount = parseInt(document.getElementById("answerCount").value);
+            var answerContainer = document.getElementById("answerContainer");
+            var correctAnswer = document.getElementById("correctAnswer");
+
+            //чистка дива с ответами
+            answerContainer.innerHTML = "";
+            correctAnswer.innerHTML = "";
+            //создание
+            if (answerCount>4){
+                answerCount = 4;
+                document.getElementById("answerCount").value = 4;
+            }
+
+            for (var i = 1; i <= answerCount; i++) {
+            var label = document.createElement("label");
+            label.setAttribute("for", "answer" + i);
+            label.textContent = "Ответ " + i + ":";
+
+            var input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("id", "answer" + i);
+            input.setAttribute("name", "answer" + i);
+            input.setAttribute("required", "required");
+            input.setAttribute("maxlength", "40");
+            input.setAttribute("autocomplete", "off");
+            input.onchange = changeFields;
+
+            answerContainer.appendChild(label);
+            answerContainer.appendChild(input);
+            answerContainer.appendChild(document.createElement("br"));
+            answerContainer.appendChild(document.createElement("br"));
+
+            var option = document.createElement("option");
+            option.value = i; 
+            option.text = "Ответ "+ i;
+            correctAnswer.appendChild(option);
+            }
+        }
+
+
+
+
+    </script>
+
+</head>
+<body>
+    <div class="registrationDiv">
+        <h1>@testName</h1>
+
+        <form asp-controller="Tests" asp-action="AddQuestionConfirming" method="post">
+
+            <input type="hidden" id="hiddenField" name="hiddenField">
+            <input type="hidden" name="idOfTest" value="@testId">
+            <fieldset>
+                <legend>Добавление вопросса:</legend>
+                <label for="question">Вопрос:</label>
+                <input type="text" id="question" name="question" required onchange="changeFields()" autocomplete="off" maxlength="200">
+                <br>
+                <br>
+
+                <label for="answerCount">Количество ответов:</label>
+                <input type="number" id="answerCount" name="answerCount" min="1" max="4" value="1" required onchange="updateAnswerFields()">
+                <br>
+                <br>
+
+                <label for="correctAnswer">Правильный ответ:</label>
+                <select id="correctAnswer" name="correctAnswer" required>
+                    <option value="1">Ответ 1</option>
+                </select>
+                <br>
+                <br>
+
+                <div id="answerContainer">
+                    <label for="answer1">Ответ 1:</label>
+                    <input type="text" id="answer1" name="answer1" required autocomplete="off" onchange="changeFields()" maxlength="40">
+                </div>
+
+
+            </fieldset>
+            <input type="submit" class="button8" value="Добавить вопрос">
+        </form>
+
+    </div>
+
+
+
+
+
+</body>
+</html>
